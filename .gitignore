@@ -1,0 +1,28 @@
+# Editor
+.vscode/
+.idea/
+
+# Build output
+*.bin
+*.o
+*.elf
+*.iso
+*.img
+
+# NASM listings (generated debug files)
+*.lst
+
+# C compiler output
+*.map
+
+# Docker
+.dockerignore
+
+# OS
+.DS_Store
+Thumbs.db
+
+# QEMU disk images
+*.qcow2
+*.qcow
+*.raw
