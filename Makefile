@@ -1,10 +1,10 @@
 # directories 
-SRC_DIR = src 
-BUILD_DIR = build 
+SRC_DIR := src
+BUILD_DIR := build
 
 # tools
-ASM = nasm
-QEMU = qemu-system-x86_64
+ASM := nasm
+QEMU := qemu-system-x86_64
 
 # targets
 all: $(BUILD_DIR)/boot.bin
