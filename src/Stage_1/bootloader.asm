@@ -6,12 +6,12 @@
 start:
     mov SI, msg             ; moves the address of msg into the source index register used for strings and arrays
     call print              ; calls the print function and pushes the return address to stack
-    jump hang               ; infinite loop by jumping to current address to prevent CPU read/writing random data
+    jmp hang               ; infinite loop by jumping to current address to prevent CPU read/writing random data
 
 print:
     lodsb                   ; loads byte from [si] directly into AL (hardcoded for these registers) and indexes one place forward through msg
     or AL, AL               ; checks if al is = 0
-    jz .done                ; if zero flag satisfied by reaching null terminator in msg then jump to .done (. means local function to print)
+    jz print_done                ; if zero flag satisfied by reaching null terminator in msg then jump to .done (. means local function to print)
     mov AH, 0x0E            ; moves the teletype output address to ah
     int 0x10                ; video interrupt sees AX register and since al contains the character and ah contains teletype it prints the character
     jmp print               ; loops back to print and loads next byte since lodsb already incremented
@@ -21,7 +21,7 @@ hang:
     hlt
     jmp hang
 
-.done:
+print_done:
     ret                     ; pops the return address off the stack so it jumps back to instruction after the function that called it (print)
 
 msg db "Boobies", 0     ; dumps given bytes into RAM as an array msg
