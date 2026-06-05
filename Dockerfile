@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
     qemu-system-x86 \
     xorriso \
     mtools \
-    gdb
+    gdb \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /OSdev
