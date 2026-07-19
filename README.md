@@ -4,7 +4,7 @@ Docker:     docker start -ai osdev-container
 C:          gcc foo.c -o foo
 Assembly:   nasm -f bin bootloader.asm -o boot.bin
 Qemu:       qemu-system-x86_64 -drive format=raw,file=boot.bin
-            qemu-system-x86_64 -drive format=raw,file=boot.bin -monitor stdio -nographic    (for output in terminal)
+            qemu-system-x86_64 -drive format=raw,file=boot.bin -nographic -d cpu_reset    (for output in terminal)
             qemu-system-x86_64 -drive format=raw,file=boot.bin -s -S                        (for setting up GDB)
             gdb
             (gdb) target remote :1234           # port

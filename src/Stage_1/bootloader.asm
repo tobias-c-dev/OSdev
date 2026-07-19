@@ -24,7 +24,7 @@ hang:
 print_done:
     ret                     ; pops the return address off the stack so it jumps back to instruction after the function that called it (print)
 
-msg db "Boobies", 0     ; dumps given bytes into RAM as an array msg
+msg db "Boobies ", 0     ; dumps given bytes into RAM as an array msg
 
 times 510-($-$$) db 0       ; dumps zeros into the binary up to 510 calculated from $=current byte $$=start of section
 dw 0xAA55                   ; writes two magic bytes at bytes 511-512 as is required by the BIOS for the boot sector
