@@ -6,7 +6,7 @@
 start:
     mov SI, msg             ; moves the address of msg into the source index register used for strings and arrays
     call print              ; calls the print function and pushes the return address to stack
-    jmp hang                ; infinite loop by jumping to current address to prevent CPU read/writing random data
+    jmp hang               ; infinite loop by jumping to hang to prevent CPU read/writing random data
 
 print:
     lodsb                   ; loads byte from [si] directly into AL (hardcoded for these registers) and indexes one place forward through msg
@@ -24,7 +24,7 @@ hang:
 print_done:
     ret                     ; pops the return address off the stack so it jumps back to instruction after the function that called it (print)
 
-msg db "Boobies ", 0        ; dumps given bytes into RAM as an array msg
+msg db "Hello ", 0     ; dumps given bytes into RAM as an array msg
 
 times 510-($-$$) db 0       ; dumps zeros into the binary up to 510 calculated from $=current byte $$=start of section
-dw 0xAA55                   ; writes two magic bytes at bytes 511-512 as is required by the BIOS for the boot sectors
+dw 0xAA55                   ; writes two magic bytes at bytes 511-512 as is required by the BIOS for the boot sector
